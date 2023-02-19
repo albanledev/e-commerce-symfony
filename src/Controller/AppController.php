@@ -48,21 +48,24 @@ class AppController extends AbstractController
     }
 
     #[Route('/product/{id}', name: 'app_product')]
-    public function product($id, ProductRepository $productRepository): Response
+    public function product($id, ProductRepository $productRepository, CategoryRepository $categoryRepository): Response
     {
         $product = $productRepository->find($id);
-        #dd($district);
+        $categories = $categoryRepository->findAll();
+        $productsInSameCategory = $productRepository->findBy(['category' => $product->getCategory()], ['id' => 'ASC']);
 
         if(!$product){
-            throw $this->createNotFoundException('Product not founddd');
+            throw $this->createNotFoundException('Product not found');
         }
 
-
         return $this->render('app/product.html.twig', [
-            #'controller_name' => 'McdoController',
             'product' => $product,
+            'categories' => $categories,
+            'other_products' => $productsInSameCategory, // Passe les autres produits à la vue
         ]);
     }
+
+
 
 
 

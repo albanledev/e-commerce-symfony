@@ -3,6 +3,58 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        h1{
+            color: white;
+            text-align: center;
+            background-color: #151D53;
+            padding: 1rem;
+            margin-bottom: 50px;
+        }
+
+        form{
+            margin: auto;
+            width: 50%;
+            margin-top: 50px;
+        }
+
+        .wesh{
+            margin-left: 30vw;
+            margin-top: 70px;
+
+
+
+        }
+
+        .wesh>a{
+            background-color: #151D53;
+            color: #FFFFFF;
+            text-decoration:none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+        }
+
+        button{
+            background-color: green;
+            text-decoration:none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+
+
+    </style>
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
@@ -15,5 +67,5 @@
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
 
-    <p>Vous êtes déjà inscrits ? <a href="{{ path('app_login') }}">Se connecter</a></p>
+    <p class="wesh">Vous êtes déjà inscrits ? <a href="{{ path('app_login') }}">Se connecter</a></p>
 {% endblock %}
