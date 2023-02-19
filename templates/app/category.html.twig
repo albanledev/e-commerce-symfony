@@ -1,0 +1,45 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Products in {{ category.name }}{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+
+    </style>
+
+
+
+    <h1>Products in {{ category.name }}</h1>
+    <a href="{{ path('app_app') }}">Back to Categories</a>
+
+
+
+    <div>
+       <a class="sort-link" href="{{ path('app_category', {'id': category.id, 'sort': 'price_asc'}) }}"> <button>Trier du moins cher ⬆️</button></a>
+        <a class="sort-link" href="{{ path('app_category', {'id': category.id, 'sort': 'price_desc'}) }}"><button>Trier du plus cher  ⬇️</button></a>
+    </div>
+
+
+    <div class="example-wrapper">
+
+        {% for product in products %}
+            <li><a href="{{ path('app_product',{'id':product.id}) }}">{{ product.name }}</a></li>
+        {% endfor %}
+
+
+
+
+
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+
+
+
+    </div>
+
+
+{% endblock %}

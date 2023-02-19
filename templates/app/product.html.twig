@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <h1>{{ product.name }}</h1>
+    <p><a href="{{ path('app_category',{'id':product.category.id}) }}">Back to other articles from {{ product.category.name }}</a></p>
+    <div class="example-wrapper">
+
+
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+
+    </div>
+
+    <ul>
+        <li>{{ product.name }}</li>
+        <li>{{ product.price }} €</li>
+        <li>{{ product.stock }} articles restants</li>
+        <li>{{ product.description }}</li>
+    </ul>
+{% endblock %}
+
